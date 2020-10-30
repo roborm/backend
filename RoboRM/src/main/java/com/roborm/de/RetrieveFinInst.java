@@ -2,17 +2,19 @@ package com.roborm.de;
 
 import com.roborm.model.FinInst;
 
-public class FinInstDAO {
+public class RetrieveFinInst {
 	
-	private FinInst fi;
-	
-//	public String getDetailsById(FinInst fi)
-//	{
-//		return message
-//	}
+	private FinInst finInst;
+	private long finInstId;
 
-	public String getdetails()
+	public FinInst getdetails()
 	{
-		return "hello";
+		
+		finInstId=2;
+		
+		finInst.setFinInstId(finInstId);
+		
+		
+		return finInst;
 	}
 }

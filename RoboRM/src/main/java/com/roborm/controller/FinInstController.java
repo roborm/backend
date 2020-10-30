@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.roborm.de.FinInstDAO;
+import com.roborm.de.RetrieveFinInst;
 import com.roborm.exception.ResourceNotFoundException;
 import com.roborm.model.FinInst;
 import com.roborm.repository.FinInstRepository;
@@ -39,8 +39,8 @@ public class FinInstController {
     }
 	
 	@GetMapping("/fininsts/test/{id}")
-    public ResponseEntity<FinInstDAO> getFinInstById2(@PathVariable(value = "id") Long finInstId){
-		FinInstDAO test1 = new FinInstDAO();
+    public ResponseEntity<RetrieveFinInst> getFinInstById2(@PathVariable(value = "id") Long finInstId){
+		RetrieveFinInst test1 = new RetrieveFinInst();
 //		FinInst fi = finInstRepository.findById(finInstId)
 //		          .orElseThrow(() -> new ResourceNotFoundException("FI not found for this id :: " + finInstId));
 		        return ResponseEntity.ok().body(test1);
