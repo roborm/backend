@@ -7,5 +7,5 @@ import com.roborm.model.FinInst;
 
 @Repository
 public interface FinInstRepository extends JpaRepository<FinInst, Long>{
-
+	
 }

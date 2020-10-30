@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.roborm.de.RetrieveFinInst;
 import com.roborm.exception.ResourceNotFoundException;
 import com.roborm.model.FinInst;
 import com.roborm.repository.FinInstRepository;
@@ -34,31 +33,10 @@ public class FinInstController {
     public ResponseEntity<FinInst> getFinInstById(@PathVariable(value = "id") Long finInstId) 
     	throws ResourceNotFoundException{
 		FinInst fi = finInstRepository.findById(finInstId)
-		          .orElseThrow(() -> new ResourceNotFoundException("FI not found for this id :: " + finInstId));
+		          .orElseThrow(() -> new ResourceNotFoundException("FI not found for this id : " + finInstId));
 		        return ResponseEntity.ok().body(fi);
     }
 	
-	@GetMapping("/fininsts/test/{id}")
-    public ResponseEntity<RetrieveFinInst> getFinInstById2(@PathVariable(value = "id") Long finInstId){
-		RetrieveFinInst test1 = new RetrieveFinInst();
-//		FinInst fi = finInstRepository.findById(finInstId)
-//		          .orElseThrow(() -> new ResourceNotFoundException("FI not found for this id :: " + finInstId));
-		        return ResponseEntity.ok().body(test1);
-    }
-	
 	
 }
 
-class PostFinInst
-{
-	private long fi_id;
-
-	public long getFi_id() {
-		return fi_id;
-	}
-
-	public void setFi_id(long fi_id) {
-		this.fi_id = fi_id;
-	}
-	
-}
