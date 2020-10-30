@@ -51,11 +51,10 @@ public class FinInstController {
         return finInstRepository.save(finInst);
     }
 	
-	@PutMapping("/fininsts/update/{id}")
-    public ResponseEntity<FinInst> updateBankNameById(@PathVariable(value = "id") Long id,
-         @Valid @RequestBody FinInst newFI) throws ResourceNotFoundException {
+	@PutMapping("/update")
+    public ResponseEntity<FinInst> updateBankNameById(@Valid @RequestBody FinInst newFI) throws ResourceNotFoundException {
 		FinInstService fs = new FinInstService(finInstRepository);
-		return ResponseEntity.ok().body(fs.UpdateById(id, newFI));
+		return ResponseEntity.ok().body(fs.UpdateById(newFI.getFinInstId(), newFI));
 	}
 }
 
