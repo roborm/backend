@@ -54,7 +54,7 @@ public class FinInstController {
 	@PutMapping("/update")
     public ResponseEntity<FinInst> updateBankNameById(@Valid @RequestBody FinInst newFI) throws ResourceNotFoundException {
 		FinInstManager fs = new FinInstManager(finInstRepository);
-		return ResponseEntity.ok().body(fs.UpdateById(newFI.getFinInstId(), newFI));
+		return ResponseEntity.ok().body(fs.UpdateNameandTypeById(newFI.getFinInstId(), newFI));
 	}
 }
 
