@@ -39,13 +39,6 @@ public class FinInstController {
 		        return ResponseEntity.ok().body(fi);
     }
 	
-	@GetMapping("/fininsts/test/{id}")
-    public ResponseEntity<String> getFinInstById2(@PathVariable(value = "id") Long finInstId) throws NumberFormatException, ResourceNotFoundException 
-    {
-		FinInstManager fs = new FinInstManager(finInstRepository);
-		        return ResponseEntity.ok().body(fs.findById(Long.valueOf("2")));
-    }
-	
 	@PostMapping("/add")
     public FinInst createFinInst(@Valid @RequestBody FinInst finInst) {
         return finInstRepository.save(finInst);
