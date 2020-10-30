@@ -28,10 +28,9 @@ public class FinInstManager {
 		return fi.getFinInstName();
 	}
 	
-	public FinInst UpdateById(Long id, FinInst newFI) throws ResourceNotFoundException
+	public FinInst UpdateNameandTypeById(Long id, FinInst newFI) throws ResourceNotFoundException
 	{
 		FinInst fi = finInstRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
-		//fi.setFinInstId(newFI.getFinInstId());
 		fi.setFinInstName(newFI.getFinInstName());
 		fi.setFinInstType(newFI.getFinInstType());
 		
