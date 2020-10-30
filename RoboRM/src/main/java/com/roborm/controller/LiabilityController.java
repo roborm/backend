@@ -17,7 +17,7 @@ public class LiabilityController {
 	@Autowired
 	private LiabilityRepository liabilityRepository;
 	
-	@GetMapping("/fininsts")
+	@GetMapping("/")
     public List<Liability> getAllLiability() {
         return liabilityRepository.findAll();
     }
