@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.roborm.exception.ResourceNotFoundException;
+import com.roborm.manager.FinInstManager;
 import com.roborm.model.FinInst;
 import com.roborm.repository.FinInstRepository;
-import com.roborm.service.FinInstService;
 
 @RestController
 @RequestMapping("/api/fininst")
@@ -42,7 +42,7 @@ public class FinInstController {
 	@GetMapping("/fininsts/test/{id}")
     public ResponseEntity<String> getFinInstById2(@PathVariable(value = "id") Long finInstId) throws NumberFormatException, ResourceNotFoundException 
     {
-		FinInstService fs = new FinInstService(finInstRepository);
+		FinInstManager fs = new FinInstManager(finInstRepository);
 		        return ResponseEntity.ok().body(fs.findById(Long.valueOf("2")));
     }
 	
@@ -53,7 +53,7 @@ public class FinInstController {
 	
 	@PutMapping("/update")
     public ResponseEntity<FinInst> updateBankNameById(@Valid @RequestBody FinInst newFI) throws ResourceNotFoundException {
-		FinInstService fs = new FinInstService(finInstRepository);
+		FinInstManager fs = new FinInstManager(finInstRepository);
 		return ResponseEntity.ok().body(fs.UpdateById(newFI.getFinInstId(), newFI));
 	}
 }

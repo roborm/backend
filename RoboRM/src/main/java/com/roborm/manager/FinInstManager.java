@@ -1,4 +1,4 @@
-package com.roborm.service;
+package com.roborm.manager;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import com.roborm.model.FinInst;
 import com.roborm.repository.FinInstRepository;
 
 @Service
-public class FinInstService {
+public class FinInstManager {
 	private FinInstRepository finInstRepository;
 	
-	public FinInstService(FinInstRepository finInstRepository)
+	public FinInstManager(FinInstRepository finInstRepository)
 	{
 		this.finInstRepository = finInstRepository;
 	}
@@ -31,7 +31,7 @@ public class FinInstService {
 	public FinInst UpdateById(Long id, FinInst newFI) throws ResourceNotFoundException
 	{
 		FinInst fi = finInstRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
-		fi.setFinInstId(newFI.getFinInstId());
+		//fi.setFinInstId(newFI.getFinInstId());
 		fi.setFinInstName(newFI.getFinInstName());
 		fi.setFinInstType(newFI.getFinInstType());
 		
