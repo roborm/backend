@@ -1,10 +1,10 @@
 package com.roborm.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.roborm.exception.ResourceNotFoundException;
 import com.roborm.model.FinInst;
 import com.roborm.repository.FinInstRepository;
 
@@ -22,9 +22,21 @@ public class FinInstService {
 		return finInstRepository.findAll();
 	}
 	
-	public Optional<FinInst> findById(Long id)
+	public String findById(Long id) throws ResourceNotFoundException
 	{
-		return finInstRepository.findById(id);
+		FinInst fi = finInstRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
+		return fi.getFinInstName();
+	}
+	
+	public FinInst UpdateById(Long id, FinInst newFI) throws ResourceNotFoundException
+	{
+		FinInst fi = finInstRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
+		fi.setFinInstId(newFI.getFinInstId());
+		fi.setFinInstName(newFI.getFinInstName());
+		fi.setFinInstType(newFI.getFinInstType());
+		
+		final FinInst updateFinInst = finInstRepository.save(fi);
+		return updateFinInst;
 	}
 	
 }
