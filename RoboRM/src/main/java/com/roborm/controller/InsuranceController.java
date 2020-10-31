@@ -38,7 +38,7 @@ public class InsuranceController {
     public ResponseEntity<List<Insurance>> getFinInstById(@PathVariable(value = "id") Long userId) 
     {
 		
-		return ResponseEntity.ok().body(insuranceRepository.findByUserId(userId));
+		return ResponseEntity.ok().body(insuranceRepository.findByUserId(userId)); 
 		
     }
 }
