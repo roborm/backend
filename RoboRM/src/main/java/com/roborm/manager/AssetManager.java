@@ -26,9 +26,9 @@ public class AssetManager {
 		return asset.getUserId();
 	}
 
-	public Asset UpdateUserIdById(Long id, Asset newAsset) throws ResourceNotFoundException {
-		Asset asset = assetRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Asset Amt not found for this id :: " + id));
+	public Asset UpdateUserIdById(Long assetId, Asset newAsset) throws ResourceNotFoundException {
+		Asset asset = assetRepository.findById(assetId)
+				.orElseThrow(() -> new ResourceNotFoundException("Asset User Id not found for this id :: " + assetId));
 		asset.setUserId(newAsset.getUserId());
 		asset.setAmt(newAsset.getAmt());
 
