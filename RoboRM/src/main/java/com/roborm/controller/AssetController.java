@@ -47,7 +47,7 @@ public class AssetController {
 	public ResponseEntity<Asset> updateAsserUserIdById(@Valid @RequestBody Asset newAsset)
 			throws ResourceNotFoundException {
 		AssetManager asset = new AssetManager(assetRepository);
-		return ResponseEntity.ok().body(asset.UpdateUserIdById(newAsset.getAssetId(), newAsset));
+		return ResponseEntity.ok().body(asset.UpdateUserIdAmtById(newAsset.getAssetId(), newAsset));
 	}
 
 }
