@@ -7,5 +7,5 @@ import com.roborm.model.Asset;
 
 @Repository
 public interface AssetRepository extends JpaRepository<Asset, Long>{
-
+	
 }
