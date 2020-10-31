@@ -26,10 +26,22 @@ public class InvestmentManager {
 	
 	public Investment UpdateById(Investment investment) throws ResourceNotFoundException
 	{
-		Investment inv = invRepo.findById(investment.getUserId())
+		Investment inv = invRepo.findById(investment.getInvestmentId())
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + investment.getInvestmentId()));
 		
 		inv.setAmt(investment.getAmt());
+		
+		final Investment updateInv = invRepo.save(inv);
+		
+		return updateInv;
+	}
+	
+	public Investment AddAmtById(Investment investment) throws ResourceNotFoundException
+	{
+		Investment inv = invRepo.findById(investment.getInvestmentId())
+				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + investment.getInvestmentId()));
+		
+		inv.setAmt(inv.getAmt()+investment.getAmt());
 		
 		final Investment updateInv = invRepo.save(inv);
 		
