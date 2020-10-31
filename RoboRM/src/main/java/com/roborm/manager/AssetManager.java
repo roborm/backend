@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.roborm.exception.ResourceNotFoundException;
 import com.roborm.model.Asset;
-import com.roborm.model.FinInst;
 import com.roborm.repository.AssetRepository;
 
 @Service
