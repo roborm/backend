@@ -10,5 +10,5 @@ import com.roborm.model.Liability;
 @Repository
 public interface LiabilityRepository extends JpaRepository<Liability, Long> {
 
-	List<Liability> findByUserId(Long userId);
+	public List<Liability> findByUserId(Long userId);
 }
