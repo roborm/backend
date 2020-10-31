@@ -51,4 +51,11 @@ public class InsuranceController {
 		InsuranceManager insMgr = new InsuranceManager(insuranceRepository);
 		return ResponseEntity.ok().body(insMgr.UpdateById(ins));
 	}
+	
+	@PostMapping("/autoadd")
+	public ResponseEntity<Insurance> insertNewInsuranceByCSV(@Valid @RequestBody Insurance ins) throws ResourceNotFoundException
+	{
+		InsuranceManager insMgr = new InsuranceManager(insuranceRepository);
+		return ResponseEntity.ok().body(insMgr.UpdateById(ins));
+	}
 }
