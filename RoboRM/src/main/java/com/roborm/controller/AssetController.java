@@ -25,30 +25,29 @@ public class AssetController {
 	@Autowired
 	private AssetRepository assetRepository;
 
-	@GetMapping("/asset")
+	@GetMapping("/assets")
 	public List<Asset> getAllAsset() {
 		return assetRepository.findAll();
 	}
-	
+
 	@GetMapping("/assets/{id}")
-    public ResponseEntity<Asset> getFinInstById(@PathVariable(value = "id") Long assetId) 
-    	throws ResourceNotFoundException{
+	public ResponseEntity<Asset> getFinInstById(@PathVariable(value = "id") Long assetId)
+			throws ResourceNotFoundException {
 		Asset asset = assetRepository.findById(assetId)
-		          .orElseThrow(() -> new ResourceNotFoundException("Asset not found for this id : " + assetId));
-		        return ResponseEntity.ok().body(asset);
-    }
-	
+				.orElseThrow(() -> new ResourceNotFoundException("Asset not found for this id : " + assetId));
+		return ResponseEntity.ok().body(asset);
+	}
+
 	@PostMapping("/add")
-    public Asset createAsset(@Valid @RequestBody Asset asset) {
-        return assetRepository.save(asset);
-    }
-	
+	public Asset createAsset(@Valid @RequestBody Asset asset) {
+		return assetRepository.save(asset);
+	}
+
 	@PutMapping("/update")
-    public ResponseEntity<Asset> updateAsserUserIdById(@Valid @RequestBody Asset newAsset) throws ResourceNotFoundException {
+	public ResponseEntity<Asset> updateAsserUserIdById(@Valid @RequestBody Asset newAsset)
+			throws ResourceNotFoundException {
 		AssetManager asset = new AssetManager(assetRepository);
 		return ResponseEntity.ok().body(asset.UpdateUserIdById(newAsset.getAssetId(), newAsset));
 	}
-	
-	
 
 }
