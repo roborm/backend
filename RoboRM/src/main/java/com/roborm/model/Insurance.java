@@ -110,9 +110,5 @@ public class Insurance {
 	public void setCoverage(String coverage) {
 		this.coverage = coverage;
 	}
-		
-	
-
-	
 
 }

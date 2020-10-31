@@ -9,10 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.roborm.exception.ResourceNotFoundException;
+import com.roborm.manager.InsuranceManager;
 import com.roborm.model.Insurance;
 import com.roborm.repository.InsuranceRepository;
 
@@ -34,11 +37,18 @@ public class InsuranceController {
         return insuranceRepository.save(ins);
     }
 	
-	@GetMapping("/getUserInsurance/{id}")
-    public ResponseEntity<List<Insurance>> getFinInstById(@PathVariable(value = "id") Long userId) 
+	@GetMapping("/getUserInsurance")
+    public ResponseEntity<List<Insurance>> getFinInstById(@Valid @RequestBody Insurance ins) 
     {
 		
-		return ResponseEntity.ok().body(insuranceRepository.findByUserId(userId));
+		return ResponseEntity.ok().body(insuranceRepository.findByUserId(ins.getUserId()));
 		
     }
+	
+	@PutMapping("/update")
+	public ResponseEntity<Insurance> updateInsuranceById(@Valid @RequestBody Insurance ins) throws ResourceNotFoundException
+	{
+		InsuranceManager insMgr = new InsuranceManager(insuranceRepository);
+		return ResponseEntity.ok().body(insMgr.UpdateById(ins));
+	}
 }
