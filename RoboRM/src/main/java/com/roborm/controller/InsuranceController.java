@@ -38,7 +38,7 @@ public class InsuranceController {
     }
 	
 	@GetMapping("/getUserInsurance")
-    public ResponseEntity<List<Insurance>> getFinInstById(@Valid @RequestBody Insurance ins) 
+    public ResponseEntity<List<Insurance>> getInsuranceById(@Valid @RequestBody Insurance ins) 
     {
 		
 		return ResponseEntity.ok().body(insuranceRepository.findByUserId(ins.getUserId()));
