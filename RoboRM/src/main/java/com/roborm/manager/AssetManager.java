@@ -28,10 +28,8 @@ public class AssetManager {
 	}
 
 //find by userId
-	public Long findByUserId(Long id) throws ResourceNotFoundException {
-		Asset asset = assetRepository.findByUserId(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Asset User Id not found for this id :: " + id));
-		return asset.getUserId();
+	public List<Asset> findByUserId(Long id) throws ResourceNotFoundException {
+		return assetRepository.findByUserId(id);
 	}
 
 //Update userId and Amt by AssetId	

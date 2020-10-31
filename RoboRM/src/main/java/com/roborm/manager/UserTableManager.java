@@ -29,9 +29,8 @@ public class UserTableManager {
 	}
 
 	// Find by userName
-	public String findByName(String name) throws ResourceNotFoundException {
+	public UserTable findByName(String name) throws ResourceNotFoundException {
 		UserTable userTable = userTableRepository.findByUserName(name);
-		String userName = userTable.getUserName();
-		return userName;
+		return userTable;
 	}
 }

@@ -30,12 +30,9 @@ public class AssetController {
 		return assetRepository.findAll();
 	}
 
-	@GetMapping("/assets/{id}")
-	public ResponseEntity<Asset> getFinInstById(@PathVariable(value = "id") Long assetId)
-			throws ResourceNotFoundException {
-		Asset asset = assetRepository.findById(assetId)
-				.orElseThrow(() -> new ResourceNotFoundException("Asset not found for this id : " + assetId));
-		return ResponseEntity.ok().body(asset);
+	@GetMapping("/useridassets")
+	public ResponseEntity<List<Asset>> getAssetByUserId(@Valid @RequestBody Asset ass) {
+		return ResponseEntity.ok().body(assetRepository.findByUserId(ass.getUserId()));
 	}
 
 	@PostMapping("/add")
