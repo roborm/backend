@@ -26,17 +26,15 @@ public class LiabilityController {
 	@Autowired
 	private LiabilityRepository liabilityRepository;
 	
-	@GetMapping("/")
+	@GetMapping("/liability")
     public List<Liability> getAllLiability() {
         return liabilityRepository.findAll();
     }
 	
-	@GetMapping("/liabilities/{id}")
-	public ResponseEntity<Liability> getFinInstById(@PathVariable(value = "id") Long liabilityId)
-			throws ResourceNotFoundException {
-		Liability liability = liabilityRepository.findById(liabilityId)
-				.orElseThrow(() -> new ResourceNotFoundException("Asset not found for this id : " + liabilityId));
-		return ResponseEntity.ok().body(liability);
+	@GetMapping("/getUserLiability")
+	public ResponseEntity<List<Liability>> getLiabiltiesById(@Valid @RequestBody Liability liability) {
+		
+		return ResponseEntity.ok().body(liabilityRepository.findByUserId(liability.getUserId()));
 	}
 
 	@PostMapping("/add")
