@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.roborm.exception.ResourceNotFoundException;
 import com.roborm.manager.UserTableManager;
-import com.roborm.model.SavingAndDeposits;
 import com.roborm.model.UserTable;
 import com.roborm.repository.UserTableRepository;
 
