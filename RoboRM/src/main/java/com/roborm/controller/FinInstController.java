@@ -7,7 +7,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,16 +25,16 @@ public class FinInstController {
 	@Autowired
 	private FinInstRepository finInstRepository;
 	
-	@GetMapping("/fininsts")
+	@GetMapping("/fininst")
     public List<FinInst> getAllFinInst() {
         return finInstRepository.findAll();
     }
 	
-	@GetMapping("/fininsts/{id}")
-    public ResponseEntity<FinInst> getFinInstById(@PathVariable(value = "id") Long finInstId) 
+	@GetMapping("/getfininst")
+    public ResponseEntity<FinInst> getFinInstById(@Valid @RequestBody FinInst finInst) 
     	throws ResourceNotFoundException{
-		FinInst fi = finInstRepository.findById(finInstId)
-		          .orElseThrow(() -> new ResourceNotFoundException("FI not found for this id : " + finInstId));
+		FinInst fi = finInstRepository.findById(finInst.getFinInstId())
+		          .orElseThrow(() -> new ResourceNotFoundException("Financial Institution not found for this id : " + finInst.getFinInstId()));
 		        return ResponseEntity.ok().body(fi);
     }
 	
@@ -45,7 +44,7 @@ public class FinInstController {
     }
 	
 	@PutMapping("/update")
-    public ResponseEntity<FinInst> updateBankNameById(@Valid @RequestBody FinInst newFI) throws ResourceNotFoundException {
+    public ResponseEntity<FinInst> updateFinInstNameById(@Valid @RequestBody FinInst newFI) throws ResourceNotFoundException {
 		FinInstManager fs = new FinInstManager(finInstRepository);
 		return ResponseEntity.ok().body(fs.UpdateNameandTypeById(newFI.getFinInstId(), newFI));
 	}

@@ -25,7 +25,7 @@ public class AssetController {
 	@Autowired
 	private AssetRepository assetRepository;
 
-	@GetMapping("/assets")
+	@GetMapping("/asset")
 	public List<Asset> getAllAsset() {
 		return assetRepository.findAll();
 	}
