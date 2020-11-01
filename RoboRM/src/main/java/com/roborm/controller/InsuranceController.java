@@ -33,7 +33,7 @@ public class InsuranceController {
     }
 
 	@PostMapping("/add")
-    public Insurance createFinInst(@Valid @RequestBody Insurance ins) {
+    public Insurance addInsurance(@Valid @RequestBody Insurance ins) {
         return insuranceRepository.save(ins);
     }
 	
