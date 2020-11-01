@@ -19,27 +19,27 @@ import com.roborm.model.UserTable;
 import com.roborm.repository.UserTableRepository;
 
 @RestController
-@RequestMapping("/api/usertable")
+@RequestMapping("/api/user")
 public class UserTableController {
 
 	@Autowired
 	private UserTableRepository userTableRepository;
 
-	@GetMapping("/usertable")
-	public List<UserTable> getAllUserTable() {
+	@GetMapping("/user")
+	public List<UserTable> getAllUserRecord() {
 		return userTableRepository.findAll();
 	}
 
 	@PostMapping("/add")
-	public UserTable createUserTable(@Valid @RequestBody UserTable userTable) {
-		return userTableRepository.save(userTable);
+	public UserTable createUserRecord(@Valid @RequestBody UserTable userRecord) {
+		return userTableRepository.save(userRecord);
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<UserTable> updateUserPasswordByUserName(@Valid @RequestBody UserTable newUserTable)
+	public ResponseEntity<UserTable> updateUserPasswordByUserName(@Valid @RequestBody UserTable newUserRecord)
 			throws ResourceNotFoundException {
 		UserTableManager userTable = new UserTableManager(userTableRepository);
-		return ResponseEntity.ok().body(userTable.UpdateUserPasswordByUserName(newUserTable));
+		return ResponseEntity.ok().body(userTable.UpdateUserPasswordByUserName(newUserRecord));
 	}
 
 }
