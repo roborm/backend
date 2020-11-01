@@ -75,7 +75,7 @@ public class InsuranceManager {
 		byte[] data = null;
 		
 		try { 
-            URL url = new URL("https://robormbucket.s3-ap-southeast-1.amazonaws.com/sample_output.csv"); 
+            URL url = new URL("https://robormbucket.s3-ap-southeast-1.amazonaws.com/output.csv"); 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); 
  
             System.out.println("Connected :)"); 
