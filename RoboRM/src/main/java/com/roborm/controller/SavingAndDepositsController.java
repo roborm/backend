@@ -43,7 +43,6 @@ public class SavingAndDepositsController {
 		return savingAndDepositsRepository.save(sad);
 	}
 
-	
 	@PutMapping("/update")
 	public ResponseEntity<SavingAndDeposits> updateSADByID(@Valid @RequestBody SavingAndDeposits sad) throws ResourceNotFoundException
 	{
