@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,13 +35,16 @@ public class InvestmentController {
 	@GetMapping("/getUserInvestment")
     public ResponseEntity<List<Investment>> getInvestmentById(@Valid @RequestBody Investment inv) 
     {
-		
 		return ResponseEntity.ok().body(investmentRepository.findByUserId(inv.getUserId()));
-		
+    }
+	
+	@PostMapping("/add")
+    public Investment addInvestment(@Valid @RequestBody Investment inv) {
+        return investmentRepository.save(inv);
     }
 	
 	@PutMapping("/update")
-	public ResponseEntity<Investment> updateInsuranceById(@Valid @RequestBody Investment inv) throws ResourceNotFoundException
+	public ResponseEntity<Investment> updateInvestmentById(@Valid @RequestBody Investment inv) throws ResourceNotFoundException
 	{
 		InvestmentManager invMgr = new InvestmentManager(investmentRepository);
 		return ResponseEntity.ok().body(invMgr.UpdateById(inv));
