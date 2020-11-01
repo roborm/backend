@@ -94,8 +94,8 @@ public class InsuranceManager {
                 // use comma as separator
                 String[] details = line.split(cvsSplitBy);
 
-                System.out.println("Detail [code1= " + details[0] + " , code2=" + details[1] + "]");
-                insArray[i]=details[1];
+                System.out.println("Detail [code1= " + details[0] + " ");
+                insArray[i]=details[0];
                 i++;
 
             }
