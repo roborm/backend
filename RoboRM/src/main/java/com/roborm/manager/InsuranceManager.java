@@ -55,11 +55,11 @@ public class InsuranceManager {
 		String[] values = CSVLink();
 		
 		ins.setUserId(Long.valueOf("1"));
-		ins.setInsuranceType(values[2]);
+		ins.setInsuranceType(values[1]);
 		ins.setFinInstId(Long.valueOf("1"));
-		ins.setPremiumAmt(Double.valueOf(values[5]));
-		ins.setSumAssured(Double.valueOf(values[7]));
-		ins.setHospitalBenefitAmt(Double.valueOf(values[8]));
+		ins.setPremiumAmt(Double.valueOf(values[4]));
+		ins.setSumAssured(Double.valueOf(values[6]));
+		ins.setHospitalBenefitAmt(Double.valueOf(values[7]));
 		ins.setCoverage(values[3]);
 		
 		
