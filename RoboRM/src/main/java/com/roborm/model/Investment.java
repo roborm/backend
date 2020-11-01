@@ -1,10 +1,13 @@
 package com.roborm.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +17,8 @@ public class Investment {
 	private long investmentId;
 	private long userId;
 	private double amt;
+	
+	private FinInst finInst;
 
 	public Investment() {
 
@@ -24,10 +29,12 @@ public class Investment {
 	 * @param userId
 	 * @param amt
 	 */
-	public Investment(long investmentId, long userId, double amt) {
+	
+	public Investment(long investmentId, long userId, double amt, FinInst finInst) {
 		this.investmentId = investmentId;
 		this.userId = userId;
 		this.amt = amt;
+		this.finInst = finInst;
 	}
 
 	@Id
@@ -40,7 +47,7 @@ public class Investment {
 		this.investmentId = investmentId;
 	}
 
-	@Column(name = "user_Id", nullable = false)
+	@Column(name = "userId", nullable = false)
 	public long getUserId() {
 		return userId;
 	}
@@ -56,6 +63,16 @@ public class Investment {
 
 	public void setAmt(double amt) {
 		this.amt = amt;
+	}
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "finInstId", referencedColumnName = "finInstId")
+	public FinInst getFinInst() {
+		return finInst;
+	}
+
+	public void setFinInst(FinInst finInst) {
+		this.finInst = finInst;
 	}
 
 }
